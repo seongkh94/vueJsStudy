@@ -11,14 +11,15 @@
     <todo-list></todo-list>
 
 </div>
-
-
 <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
 <script>
+    //global component registration
     Vue.component('todo-footer',{
             template: '<p>This is another global child component</p>'
             }
     );
+
+    //local-component content
     var local = {
         template: '<p>This is another local child component</p>'
     };
@@ -27,6 +28,8 @@
         data:{
             message: 'This is a parent component'
         },
+
+        //local component registration
         components: {
             'todo-list': local
         }
