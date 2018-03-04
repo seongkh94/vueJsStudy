@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    <button v-on:click="reversMsg">문자열 역순</button>
+</div>
+<div id="app2">
+    {{ reversMsg }}
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+
+<script>
+/*
+   computed속성과 methods속성의 차이점
+   - 능동         수동    -> 버튼을 눌러 이벤트를 발생시켜야 methods는 실행됨.
+   - computed의 경우 캐싱 기법을 통해 자동 계산이 되어 계산된 값을 다시 계산하지 않는다. 복잡한 연산을 한번에 하기 편함.
+
+*/
+    new Vue({
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        methods: {
+            reversMsg: function () {
+                this.message = this.message.split('').reverse().join('');
+                return this.message;
+            }
+        }
+    }).$mount('#app');
+
+    new Vue({
+        data: {
+            message: 'Hello Vue.js!'
+        },
+        computed: {
+            reversMsg: function () {
+                this.message = this.message.split('').reverse().join('');
+                return this.message;
+            }
+        }
+    }).$mount('#app2');
+
+</script>
+</body>
+</html>
